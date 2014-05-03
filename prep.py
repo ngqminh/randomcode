@@ -1,5 +1,5 @@
 # random list manipulation things
-def listManip():
+def list_manip():
     stuff = [1, "a", "b", 2, 3, "c"]
     stuff[:] = [i for i in stuff if not type(i) == int]
     print(stuff)
@@ -59,7 +59,7 @@ class BST:
 # get the right neighbor of a node
 # arthur got asked this question at tripadvisor
 # can also be easily modified to do level-order traversal of a binary tree
-def rightneighbor(root, q, node):
+def right_neighbor(root, q, node):
     if root.val == "Guard":
         if q:
             q.append(root)
@@ -82,10 +82,10 @@ def rightneighbor(root, q, node):
             else: return -1
         else: return -1
 
-    return rightneighbor(q.pop(0), q, node)
+    return right_neighbor(q.pop(0), q, node)
 
 # tree things I guess
-def treeshit():
+def tree_shit():
     node1 = Node(12, None)
     node2 = Node(8, node1)
     node1.left = node2
@@ -96,40 +96,40 @@ def treeshit():
     tree.insert(5)
     q = []
     q.append(Node("Guard", None))
-    neighbor = (rightneighbor(node1, q, 1))
+    neighbor = (right_neighbor(node1, q, 1))
     print(neighbor)
 
 # sum of BST nodes
-def sumBST(root):
+def sum_BST(root):
     if not root:
         return 0
     else:
-        return root.val + sumBST(root.left) + sumBST(root.right)
+        return root.val + sum_BST(root.left) + sum_BST(root.right)
 
 # order traversals
-def preorder(node):
+def pre_order(node):
     print(node.val)
     if node.left != None:
-        preorder(node.left)
+        pre_order(node.left)
     if node.right != None:
-        preorder(node.right)
+        pre_order(node.right)
 
-def inorder(node):
+def in_order(node):
     if node.left != None:
-        inorder(node.left)
+        in_order(node.left)
     print(node.val)
     if node.right != None:
-        inorder(node.right)
+        in_order(node.right)
 
-def postorder(node):
+def post_order(node):
     if node.left != None:
-        postorder(node.left)
+        post_order(node.left)
     if node.right != None:
-        postorder(node.right)
+        post_order(node.right)
     print(node.val)
 
 # subtract strings... intersect is the same index
-def minusintersect():
+def minus_intersect():
     a = "aabbcc"
     b = "ccbbaa"
     ret = [i[0] for i in zip(a,b) if i[0] != i[1]]
@@ -152,12 +152,13 @@ def binsearch_array(number, array, start, end):
     elif number > array[idx]:
         return binsearch_array(number, array, idx, end)
 
-def arraysearchshit():
+def array_search_shit():
     array = [0, 1, 2, 3, 4, 5, 6]
     print(binsearch_array(5, array, 0, len(array)))
 
 # with python methods
-def stringintersect():
+# actually does intersect
+def string_intersect():
     a = "abcde"
     b = "whatever"
     c = set(a) & set(b)
@@ -171,7 +172,7 @@ class lNode():
         self.value = value
 
 # reverses linkedlist iteratively
-def revlinkedlist_iter():
+def rev_linkedlist_iter():
     node1 = lNode(1)
     node2 = lNode(2)
     node1.next = node2
@@ -194,7 +195,7 @@ def revlinkedlist_iter():
         print(cur.value)
         cur = cur.next
 
-def revll():
+def rev_ll():
     node1 = lNode(1)
     node2 = lNode(2)
     node1.next = node2
@@ -289,7 +290,7 @@ def BFS(root, q, path):
     BFS(next, q, path)
 
 #find the lowest common ancestor for a, b and root
-def findlowest(a, b, root):
+def find_lowest(a, b, root):
     #empty dict
     path = {}
     #dictionary : {node: parent}
@@ -354,7 +355,7 @@ def string_palindrome(num):
 
 # gets the nth to last item in a linkedlist
 
-def nthToLast(n, head):
+def nth_to_last(n, head):
     ret = head
     for i in range(n):
         head = head.next
@@ -373,4 +374,4 @@ def prep_nth():
     node2.next = node3
     node4 = lNode(4)
     node3.next = node4
-    print(nthToLast(1, node0).value)
+    print(nth_to_last(1, node0).value)
