@@ -351,3 +351,26 @@ def string_palindrome(num):
         if str_num[i] != str_num[:-i]:
             return False
     return True
+
+# gets the nth to last item in a linkedlist
+
+def nthToLast(n, head):
+    ret = head
+    for i in range(n):
+        head = head.next
+    while head.next:
+        head = head.next
+        ret = ret.next
+    return ret
+
+def prep_nth():
+    node0 = lNode(0)
+    node1 = lNode(1)
+    node0.next = node1
+    node2 = lNode(2)
+    node1.next = node2
+    node3 = lNode(3)
+    node2.next = node3
+    node4 = lNode(4)
+    node3.next = node4
+    print(nthToLast(1, node0).value)
