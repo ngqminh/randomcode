@@ -375,3 +375,27 @@ def prep_nth():
     node4 = lNode(4)
     node3.next = node4
     print(nth_to_last(1, node0).value)
+
+def int_to_string(number):
+    FIRST_TEN = ["one", "two", "three", "four", "five", "six", "seven",
+             "eight", "nine"]
+    SECOND_TEN = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
+              "sixteen", "seventeen", "eighteen", "nineteen"]
+    OTHER_TENS = ["twenty", "thirty", "forty", "fifty", "sixty", "seventy",
+              "eighty", "ninety"]
+    HUNDRED = "hundred"
+    sec = False
+    #if it's between 10 and 19, then it's in second 10
+    if (number % 100) < 20 and (number % 100) >= 10:
+        sec = True
+    str_num = str(number)
+    ret = ""
+    for i in range(0, len(str_num)):
+        if i == 0 and not sec and number%10 != 0:
+            ret = FIRST_TEN[number%10-1]
+        elif i == 1 and sec:
+            ret = SECOND_TEN[number%10]
+        elif i == 1 and not sec and number%100//10 > 1:
+            ret = OTHER_TENS[number%100//10-2] + " " + ret
+        elif i == 2:
+            ret = FIRST_TEN[number//100-1] + " " + HUNDRED + " " + ret
