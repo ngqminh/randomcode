@@ -399,3 +399,15 @@ def int_to_string(number):
             ret = OTHER_TENS[number%100//10-2] + " " + ret
         elif i == 2:
             ret = FIRST_TEN[number//100-1] + " " + HUNDRED + " " + ret
+
+# check if 2 linked lists are merged
+# just check if the last node is the same...
+def merged_ll(head1, head2):
+    while head1.next:
+        head1 = head1.next
+    while head2.next:
+        head2 = head2.next
+    if head1 == head2:
+        return True
+    else:
+        return False
