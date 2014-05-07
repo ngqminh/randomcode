@@ -411,3 +411,21 @@ def merged_ll(head1, head2):
         return True
     else:
         return False
+
+# not sure if this works? untested
+# logic should be fine... add all nodes of one LL into a map
+# go through 2nd LL, return at first hit, else return None
+def mergepoint(head1, head2):
+    node_map = {head1 : None}
+    while head1.next:
+        head1 = head1.next
+        node_map[head1] = head1.next
+    while head2.next:
+        try:
+            node_map[head2]
+            return head2
+        except:
+            continue
+        head2 = head2.next
+    return None
+
