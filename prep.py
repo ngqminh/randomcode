@@ -429,3 +429,21 @@ def mergepoint(head1, head2):
         head2 = head2.next
     return None
 
+# gives intersection of 2 sorted lists in O(n)
+# basically merging part of mergesort
+def intersect_sorted(l1, l2):
+    p1 = 0
+    p2 = 0
+    len1 = len(l1)
+    len2 = len(l2)
+    ret = []
+    while p1 < len1 and p2 < len2:
+        if l1[p1] == l2[p2]:
+            ret.append(l1[p1])
+            p1 += 1
+            p2 += 1
+        elif l1[p1] < l2[p2]:
+            p1 += 1
+        else:
+            p2 += 1
+    return ret
